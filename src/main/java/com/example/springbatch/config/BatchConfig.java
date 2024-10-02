@@ -23,7 +23,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Configuration

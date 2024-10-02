@@ -5,6 +5,7 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ResourceUtils;
 
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,11 +25,15 @@ public class ExcelItemReader implements ItemReader<Users> {
     private final Iterator<Users> userIterator;
 
     public ExcelItemReader(ExcelReader excelReader) {
-        // ExcelReader를 통해 엑셀 데이터를 미리 읽어 리스트로 준비
-        // 리소스 경로에 있는 엑셀 파일을 읽음
-        String filePath = new ClassPathResource("data/users.xlsx").getPath();
-        List<Users> users = excelReader.readExcelFile(filePath);
-        this.userIterator = users.iterator(); // Iterator로 변환하여 순차적으로 데이터 반환
+        try {
+            // 리소스 경로에 있는 엑셀 파일을 InputStream으로 읽음
+            ClassPathResource resource = new ClassPathResource("data/users.xlsx");
+            InputStream inputStream = resource.getInputStream(); // InputStream으로 파일 읽기
+            List<Users> users = excelReader.readExcelFile(inputStream); // ExcelReader에서 InputStream으로 처리
+            this.userIterator = users.iterator(); // Iterator로 변환하여 순차적으로 데이터 반환
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to read Excel file", e);
+        }
     }
 
     @Override
