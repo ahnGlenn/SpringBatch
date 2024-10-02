@@ -14,3 +14,38 @@ springBatch 스케줄러의 이미지를 생성 후 붙일 예정.....
 
 # 성능 테스트(jmeter)
 구현 후 성능 테스트 예정...
+
+# 디렉토리 구조
+spring-batch-excel/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── example/
+│   │   │           └── batch/
+│   │   │               ├── config/
+│   │   │               │   └── BatchConfig.java
+│   │   │               ├── model/
+│   │   │               │   └── User.java
+│   │   │               ├── reader/
+│   │   │               │   ├── ExcelItemReader.java
+│   │   │               │   └── ExcelReader.java
+│   │   │               ├── repository/
+│   │   │               │   └── UserRepository.java
+│   │   │               └── processor/
+│   │   │                   └── UserProcessor.java
+│   │   ├── resources/
+│   │   │   ├── application.properties
+│   │   │   ├── data/
+│   │   │   │   └── sample-users.xlsx
+│   │   │   └── schema.sql
+│   │   └── webapp/
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── example/
+│                   └── batch/
+│                       └── BatchJobTest.java
+│
+└── build.gradle
