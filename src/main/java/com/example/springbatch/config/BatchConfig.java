@@ -51,7 +51,7 @@ public class BatchConfig {
                       ItemProcessor<Users, Users> processor,
                       ItemWriter<Users> writer) {
         return new StepBuilder("step1", jobRepository)
-                .<Users, Users>chunk(100, transactionManager)
+                .<Users, Users>chunk(10, transactionManager) // 청크 크기 설정 (10개씩 처리)
                 .reader(reader)
                 .processor(processor)
                 .writer(writer)
@@ -104,6 +104,7 @@ public class BatchConfig {
     public ItemProcessor<Users, Users> processor() {
         return user -> {
             // 데이터 가공 로직을 여기서 처리할 수 있습니다.
+            System.out.println(">>> ItemProcessor : "+ user);
             // user.setEmail(user.getEmail().toLowerCase());
             return user;
         };
