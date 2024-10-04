@@ -51,30 +51,41 @@ public class BatchConfig {
                       ItemProcessor<Users, Users> processor,
                       ItemWriter<Users> writer) {
         return new StepBuilder("step1", jobRepository)
-                .tasklet(chunkTasklet(reader, processor, writer), transactionManager) // tasklet 방식으로 청크 처리
+                .<Users, Users>chunk(100, transactionManager)
+                .reader(reader)
+                .processor(processor)
+                .writer(writer)
                 .build();
     }
-
-    private Tasklet chunkTasklet(ItemReader<Users> reader,
-                                 ItemProcessor<Users, Users> processor,
-                                 ItemWriter<Users> writer) {
-        return (contribution, chunkContext) -> {
-            List<Users> usersChunk = new ArrayList<>();
-            int chunkSize = 100; // 청크 크기
-            for (int i = 0; i < chunkSize; i++) {
-                Users user = reader.read();
-                if (user == null) {
-                    break; // 더 이상 읽을 데이터가 없으면 종료
-                }
-                Users processedUser = processor.process(user);
-                usersChunk.add(processedUser);
-            }
-            if (!usersChunk.isEmpty()) {
-                writer.write((Chunk<? extends Users>) usersChunk); // 청크로 작성
-            }
-            return usersChunk.isEmpty() ? RepeatStatus.FINISHED : RepeatStatus.CONTINUABLE; // 처리할 데이터가 더 있으면 계속 진행
-        };
-    }
+//    @Bean
+//    public Step step1(ItemReader<Users> reader,
+//                      ItemProcessor<Users, Users> processor,
+//                      ItemWriter<Users> writer) {
+//        return new StepBuilder("step1", jobRepository)
+//                .tasklet(chunkTasklet(reader, processor, writer), transactionManager) // tasklet 방식으로 청크 처리
+//                .build();
+//    }
+//
+//    private Tasklet chunkTasklet(ItemReader<Users> reader,
+//                                 ItemProcessor<Users, Users> processor,
+//                                 ItemWriter<Users> writer) {
+//        return (contribution, chunkContext) -> {
+//            List<Users> usersChunk = new ArrayList<>();
+//            int chunkSize = 100; // 청크 크기
+//            for (int i = 0; i < chunkSize; i++) {
+//                Users user = reader.read();
+//                if (user == null) {
+//                    break; // 더 이상 읽을 데이터가 없으면 종료
+//                }
+//                Users processedUser = processor.process(user);
+//                usersChunk.add(processedUser);
+//            }
+//            if (!usersChunk.isEmpty()) {
+//                writer.write((Chunk<? extends Users>) usersChunk); // 청크로 작성
+//            }
+//            return usersChunk.isEmpty() ? RepeatStatus.FINISHED : RepeatStatus.CONTINUABLE; // 처리할 데이터가 더 있으면 계속 진행
+//        };
+//    }
 
 
     /*
