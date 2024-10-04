@@ -27,17 +27,17 @@ public class ExcelReader {
 
 
         for (Row row : sheet) {
-            if (row.getRowNum() == 0) {
-                continue; // 첫 번째 행은 헤더이므로 생략
-            }
-
             Users user = new Users();
-            user.setName(row.getCell(0).getStringCellValue());
+            // 첫번째 셀이 텍스트여도 소수로 읽는 POI문제점 해결
+            String cell_0 = String.valueOf(row.getCell(0).getNumericCellValue()).replaceAll("\\.\\d", "");
+
+            user.setId(cell_0 + row.getCell(1).getStringCellValue());
+            user.setName(row.getCell(2).getStringCellValue());
+            user.setEmail(row.getCell(3).getStringCellValue());
 
             users.add(user); // 리스트에 추가
         }
         workbook.close();
-        System.out.println("엑셀파일 확인 : " + users);
 
         return users;
     }
