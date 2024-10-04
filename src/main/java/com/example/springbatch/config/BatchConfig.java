@@ -76,6 +76,13 @@ public class BatchConfig {
         };
     }
 
+
+    /*
+    *  배치 작업의 기본 흐름
+    *  1. ItemReader: 데이터를 읽어옵니다 (예: CSV 파일, 데이터베이스 등에서).
+    *  2. ItemProcessor (선택 사항): 데이터를 가공합니다.
+    *  3. ItemWriter: 처리된 데이터를 데이터베이스에 저장합니다 (RepositoryItemWriter가 사용됩니다).
+    */
     @Bean
     public ItemReader<Users> reader() {
         ExcelReader excelReader = new ExcelReader();
@@ -86,7 +93,7 @@ public class BatchConfig {
     public ItemProcessor<Users, Users> processor() {
         return user -> {
             // 데이터 가공 로직을 여기서 처리할 수 있습니다.
-            user.setEmail(user.getEmail().toLowerCase());
+            // user.setEmail(user.getEmail().toLowerCase());
             return user;
         };
     }

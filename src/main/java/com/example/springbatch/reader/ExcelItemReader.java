@@ -18,7 +18,7 @@ import java.util.List;
 * [ 전체적인 동작 프로세스 ]
 * ExcelItemReader에서 ExcelReader를 호출하여 엑셀 파일(src/main/resources/data/users.xlsx)을 읽는다.
 * ExcelReader는 ClassPathResource를 통해 리소스 디렉토리의 엑셀 파일을 열고, Apache POI를 사용하여 데이터를 읽고 User객체 리스트로 변환한다.
-* 변환된 리스트는 ExcelItemReader에서 하나씩 read() 메서드를 통해 Spring Batch 처리 흐름으로 전달됩니다.
+* 변환된 리스트는 ExcelItemReader에서 하나씩 read() 메서드를 통해 Spring Batch 처리 흐름으로 전달된다.
 */
 public class ExcelItemReader implements ItemReader<Users> {
 
