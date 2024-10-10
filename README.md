@@ -36,7 +36,9 @@ spring-batch-excel/
 │   │   │       └── example/
 │   │   │           └── batch/
 │   │   │               ├── config/
-│   │   │               │   └── BatchConfig.java
+│   │   │               │   ├── BatchConfig.java
+│   │   │               │   ├── BatchJobConfig.java
+│   │   │               │   └── BatchStepConfig.java
 │   │   │               ├── model/
 │   │   │               │   └── User.java
 │   │   │               ├── reader/
