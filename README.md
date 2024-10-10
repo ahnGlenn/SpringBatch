@@ -25,7 +25,10 @@ springBatch 스케줄러의 이미지를 생성 후 붙일 예정.....
 2. h2 db에 배치 메타테이블 생성x에러
    - spring.batch.jdbc.initialize-schema=always 초기화 시 항시 생성
    - 스프링부트 3버전 부터는 @EnableBatchProcessing을 제거 해야 메타테이블이 자동생성됨
-
+3. 앱 실행 시 job1, 스프링스케줄러로 job2실행 시 오류 발생
+   -   spring.batch.job.enabled=false를 true로 application.properties에 설정해놨기때문
+   -   (불필요한 자동 실행을 방지하여 Job name must be specified in case of multiple jobs 오류를 해결)
+ 
 # 디렉토리 구조
 spring-batch-excel/
 │
