@@ -23,6 +23,7 @@ springBatch 스케줄러의 이미지를 생성 후 붙일 예정.....
    - BatchConfig.java에 job, step을 한번에 작성하여서 복잡한 참조 오류 발생
    - Batch(config, JobConfig, StepConfig).java 로 분리하여 명확하게 구성
 2. h2 db에 배치 메타테이블 생성x에러
+   - spring.batch.jdbc.initialize-schema=always 초기화 시 항시 생성
    - 스프링부트 3버전 부터는 @EnableBatchProcessing을 제거 해야 메타테이블이 자동생성됨
 
 # 디렉토리 구조
