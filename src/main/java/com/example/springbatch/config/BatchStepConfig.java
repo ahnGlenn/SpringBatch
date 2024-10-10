@@ -65,7 +65,8 @@ public class BatchStepConfig {
         ExcelReader excelReader = new ExcelReader();
         try {
             // 리소스 경로에 있는 엑셀 파일을 InputStream으로 읽음
-            ClassPathResource resource = new ClassPathResource("data/users.xlsx");
+            // ClassPathResource resource = new ClassPathResource("data/users.xlsx");
+            ClassPathResource resource = new ClassPathResource("data/user_data.xlsx");
             InputStream inputStream = resource.getInputStream(); // InputStream으로 파일 읽기
             List<Users> users = excelReader.readExcelFile(inputStream); // ExcelReader에서 InputStream으로 처리
 
