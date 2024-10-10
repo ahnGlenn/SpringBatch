@@ -18,6 +18,8 @@ public class BatchJobConfig {
     private final Step step1;
     private final Step step2;
 
+    private final JobCompletionNotificationListener listener;
+
     @Bean
     public Job job1(Step step1) {
         return new JobBuilder("job1", jobRepository)
@@ -28,6 +30,7 @@ public class BatchJobConfig {
     @Bean
     public Job job2(Step step2) {
         return new JobBuilder("job2", jobRepository)
+                .listener(listener)
                 .start(step2)
                 .build();
     }

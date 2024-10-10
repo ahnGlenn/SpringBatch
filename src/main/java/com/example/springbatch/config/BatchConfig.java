@@ -47,6 +47,7 @@ public class BatchConfig {
             jobLauncher.run(job2, jobParameters);
             System.out.println("####Job2(scheduler) executed successfully.");
         } catch (Exception e) {
+            // 실패 시 로깅 및 재실행 로직 구현(알림, 메일 등)
             e.printStackTrace();
         }
     }
