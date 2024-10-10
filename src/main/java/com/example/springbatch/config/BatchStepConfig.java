@@ -29,11 +29,20 @@ public class BatchStepConfig {
     private final JobRepository jobRepository;
     private final PlatformTransactionManager transactionManager;
     private final UserRepository userRepository;
-    // private final Iterator<Users> userIterator;
 
     @Bean
     public Step step1(){
         return new StepBuilder("step1",jobRepository)
+                .<Users, Users>chunk(1000,transactionManager)
+                .reader(itemReader())
+                .processor(itemProcessor())
+                .writer(itemWriter())
+                .build();
+    }
+
+    @Bean
+    public Step step2(){
+        return new StepBuilder("step2",jobRepository)
                 .<Users, Users>chunk(1000,transactionManager)
                 .reader(itemReader())
                 .processor(itemProcessor())
@@ -75,7 +84,6 @@ public class BatchStepConfig {
             public Users process(Users user) {
                 System.out.println("Processing user: " + user);
                 // 필요한 데이터 처리 로직 추가
-                // 예를 들어 대문자로 변환
                 user.setName(user.getName().toUpperCase()); // 이름을 대문자로 변환
                 return user; // 처리 후 User 객체 반환
             }
