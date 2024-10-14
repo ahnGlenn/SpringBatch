@@ -1,5 +1,5 @@
 # SpringBatch
-Spring Batch를 사용한 대용량 데이터 컨트롤 토이 프로젝트
+Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 - Spring Boot                (v3.3.4)
 - Spring Batch               (v5)
 - h2(inmemory DB)
