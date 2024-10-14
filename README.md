@@ -9,7 +9,7 @@ Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 - 10만건 11초
 
 # 설명
-1. 개발기간 : 2024.10-03 ~ present (실무로 인한 일정 변경)
+1. 개발기간 : 2024.10.03 ~ 2024.10.15
 2. 백엔드 : Java, SpringBoot, JPA, SpringBatch
 3. Tool : IntelliJ, Gradle
 
