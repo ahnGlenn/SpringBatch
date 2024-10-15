@@ -14,7 +14,8 @@ Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 3. Tool : IntelliJ, Gradle
 
 # 소프트웨어 아키텍처
-![image](https://github.com/user-attachments/assets/463ca289-7009-4c50-a53b-94546580458b)
+![image](https://github.com/user-attachments/assets/3b0624da-0a99-4a28-b532-57ec3b28f3b5)
+
 
 
 # 성능 테스트(jmeter)
