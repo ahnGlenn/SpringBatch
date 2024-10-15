@@ -14,7 +14,8 @@ Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 3. Tool : IntelliJ, Gradle
 
 # 소프트웨어 아키텍처
-springBatch 스케줄러의 이미지를 생성 후 붙일 예정.....
+![image](https://github.com/user-attachments/assets/463ca289-7009-4c50-a53b-94546580458b)
+
 
 # 성능 테스트(jmeter)
 구현 후 성능 테스트 예정...
