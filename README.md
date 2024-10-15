@@ -4,22 +4,25 @@ Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 - Spring Batch               (v5)
 - h2(inmemory DB)
 
+
 # 목표
 엑셀의 50만건 데이터를 가공 하여 저장 후 테이블에 데이터를 이관
 - 10만건 11초
+
 
 # 설명
 1. 개발기간 : 2024.10.03 ~ 2024.10.15
 2. 백엔드 : Java, SpringBoot, JPA, SpringBatch
 3. Tool : IntelliJ, Gradle
 
+
 # 소프트웨어 아키텍처
 ![image](https://github.com/user-attachments/assets/3b0624da-0a99-4a28-b532-57ec3b28f3b5)
 
 
-
 # 성능 테스트(jmeter)
 구현 후 성능 테스트 예정...
+
 
 # 발생 에러 내역
 1. 순환 참조 에러
@@ -31,6 +34,7 @@ Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 3. 앱 실행 시 job1, 스프링스케줄러로 job2실행 시 오류 발생
    -   spring.batch.job.enabled=false를 true로 application.properties에 설정해놨기때문
    -   (불필요한 자동 실행을 방지하여 Job name must be specified in case of multiple jobs 오류를 해결)
+
  
 # 디렉토리 구조
 spring-batch-excel/
