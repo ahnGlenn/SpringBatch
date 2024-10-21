@@ -49,7 +49,9 @@ Spring Batch를 사용한 대용량 데이터 이관 프로젝트
 <br/>
  
 # 디렉토리 구조
-spring-batch-excel/
+![image](https://github.com/user-attachments/assets/ed5ab8bd-a876-420c-b693-06d4a63a16b8)
+<!-- 
+spring-batch/
 │
 ├── src/
 │   ├── main/
@@ -84,3 +86,4 @@ spring-batch-excel/
 │                       └── BatchJobTest.java
 │
 └── build.gradle
+-->
